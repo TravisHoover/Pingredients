@@ -1,9 +1,13 @@
 import React from 'react';
-import { AppRegistry } from 'react-native';
+import { AppRegistry, View } from 'react-native';
 import Header from './src/components/header';
+import RecipeList from './src/components/RecipeList'
 
 const App = () => (
-  <Header headerText={'Pingredients'} />
+  <View>
+    <Header headerText={'Pingredients'} />
+    <RecipeList/>
+  </View>
 );
 
 
