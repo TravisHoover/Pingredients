@@ -1,12 +1,29 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import axios from 'axios';
+import RecipeDetail from './RecipeDetail';
 
-const RecipeList = () => {
-  return (
-    <View>
-      <Text>Recipe List</Text>
-    </View>
-  )
-};
+class RecipeList extends Component {
+  state = { albums: [] };
+  
+  componentWillMount() {
+    axios.get('')
+    .then(response => this.setState({albums: response.data}))
+  }
+  
+  renderAlbums() {
+    return this.state.albums.map(album =>
+      <RecipeDetail key={album.title} album={album}/>
+    );
+  }
+  
+  render() {
+    return (
+      <View>
+        {this.renderAlbums()}
+      </View>
+    )
+  }
+}
 
 export default RecipeList;
