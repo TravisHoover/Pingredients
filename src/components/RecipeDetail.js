@@ -13,7 +13,7 @@ const RecipeDetail = (props) => {
         </View>
         <View style={styles.headerContentStyle}>
           <Text style={styles.headerTextStyle}>{props.recipe.title}</Text>
-          <Text>{props.recipe.artist}</Text>
+          <Text>{props.recipe.description}</Text>
         </View>
       </CardSection>
       <CardSection>

@@ -7,7 +7,7 @@ class RecipeList extends Component {
   state = { recipes: [] };
   
   componentWillMount() {
-    axios.get('')
+    axios.get('https://raw.githubusercontent.com/TravisHoover/Pingredients/master/dummyData.json')
     .then(response => this.setState({recipes: response.data}))
   }
   
