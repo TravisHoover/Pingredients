@@ -4,23 +4,23 @@ import axios from 'axios';
 import RecipeDetail from './RecipeDetail';
 
 class RecipeList extends Component {
-  state = { albums: [] };
+  state = { recipes: [] };
   
   componentWillMount() {
     axios.get('')
-    .then(response => this.setState({albums: response.data}))
+    .then(response => this.setState({recipes: response.data}))
   }
   
-  renderAlbums() {
-    return this.state.albums.map(album =>
-      <RecipeDetail key={album.title} album={album}/>
+  renderRecipes() {
+    return this.state.recipes.map(recipe =>
+      <RecipeDetail key={recipe.title} recipe={recipe}/>
     );
   }
   
   render() {
     return (
       <View>
-        {this.renderAlbums()}
+        {this.renderRecipes()}
       </View>
     )
   }
