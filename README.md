@@ -1,4 +1,4 @@
-##Installation
+## Installation
 To install on an Android phone, create a file `local.properties` and <br>
 and place it in your `/android` directory that includes: <br>
 ```sdk.dir = /Users/USERNAME/Library/Android/sdk``` where USERNAME <br>

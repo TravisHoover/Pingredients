@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import axios from 'axios';
 import RecipeDetail from './RecipeDetail';
 
@@ -19,9 +19,9 @@ class RecipeList extends Component {
   
   render() {
     return (
-      <View>
+      <ScrollView>
         {this.renderRecipes()}
-      </View>
+      </ScrollView>
     )
   }
 }
