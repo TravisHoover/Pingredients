@@ -2,10 +2,12 @@ import React from 'react';
 import { Text, View, Image } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
+import Button from './Button';
 
 const RecipeDetail = (props) => {
   return (
     <Card>
+      
       <CardSection>
         <View style={styles.recipeContainerStyle}>
           <Image style={styles.thumbnailStyle}
@@ -16,9 +18,14 @@ const RecipeDetail = (props) => {
           <Text>{props.recipe.description}</Text>
         </View>
       </CardSection>
+      
       <CardSection>
         <Image style={styles.imageStyle}
                source={{uri: props.recipe.image}}/>
+      </CardSection>
+      
+      <CardSection>
+        <Button />
       </CardSection>
     </Card>
   )
@@ -30,7 +37,7 @@ const styles = {
     justifyContent: 'space-around'
   },
   headerTextStyle: {
-    fontSize: 18
+    fontSize: 20
   },
   thumbnailStyle: {
     height: 50,
