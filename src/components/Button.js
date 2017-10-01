@@ -15,16 +15,16 @@ const styles = {
   buttonStyle: {
     flex: 1,
     alignSelf: 'stretch',
-    backgroundColor: '#fff',
+    backgroundColor: '#C92228',
     borderWidth: 5,
     borderRadius: 1,
-    borderColor: '#007aff',
+    borderColor: '#C92228',
     marginLeft: 5,
     marginRight: 5
   },
   textStyle: {
     alignSelf: 'center',
-    color: '#007aff',
+    color: '#fff',
     fontSize: 16,
     fontWeight: '600',
     paddingTop: 10,
