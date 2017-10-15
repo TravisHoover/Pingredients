@@ -1,12 +1,13 @@
 import React from 'react';
 import { AppRegistry, View } from 'react-native';
-import Header from './src/components/header';
-import RecipeList from './src/components/RecipeList'
+import Header from './src/components/Header';
+import RecipeList from './src/components/RecipeList';
+import Login from './src/components/Login';
 
 const App = () => (
   <View style={{flex: 1}}>
     <Header headerText={'Pingredients'} />
-    <RecipeList/>
+    <Login/>
   </View>
 );
 
