@@ -58,4 +58,4 @@ const styles = {
   }
 };
 
-export default RecipeDetail;
+export { RecipeDetail };
