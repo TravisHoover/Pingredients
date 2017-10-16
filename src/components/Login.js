@@ -1,27 +1,56 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native'
-//import firebase from 'firebase';
-import Button from './Button';
-import CardSection from './CardSection';
-import Card from './Card';
-import Input from './Input';
+import firebase from 'firebase';
+import { Button, Card, CardSection, Input, Spinner } from './common';
 
 class LoginForm extends Component {
   state = {  email   : '',
     password : '',
-    error    : ''
+    error    : '',
+    loading  : false
   };
   
   onButtonPress() {
     const { email, password } = this.state;
-    this.setState({error: ''});
-    // firebase.auth().signInWithEmailAndPassword(email,password)
-    // .catch(() => {
-    //   firebase.auth().createUserWithEmailAndPassword(email,password)
-    //   .catch(() => {
-    //     this.setState({error: 'Authentication Failed'})
-    //   })
-    // })
+    
+    // this.setState({error: '', loading: true});
+    // let provider = new firebase.auth.FacebookAuthProvider();
+    //
+    firebase.auth().signInWithRedirect('https://api.pinterest.com/oauth/?scope=read_public&client_id=4911971725215810382&state=768uyFys%20response_type=code&redirect_uri=https://pingredients-409c0.firebaseapp.com/__/auth/handler&response_type=code');
+    firebase.auth().signInWithEmailAndPassword(email,password)
+    .then(this.onLoginSuccess.bind(this))
+    .catch(() => {
+      firebase.auth().createUserWithEmailAndPassword(email,password)
+      .then(this.onLoginSuccess.bind(this))
+      .catch(this.onLoginFail.bind(this))
+    })
+  }
+  
+  onLoginSuccess() {
+    this.setState({
+      email: '',
+      password: '',
+      error: '',
+      loading: false
+    })
+  }
+  
+  onLoginFail() {
+    this.setState({
+      error: 'Authentication Failed',
+      loading: false
+    })
+  }
+  
+  renderButton() {
+    if(this.state.loading) {
+      return <Spinner size={'small'}/>
+    }
+    return (
+      <Button onPress={this.onButtonPress.bind(this)}>
+        Log in
+      </Button>
+    );
   }
   
   render() {
@@ -51,9 +80,7 @@ class LoginForm extends Component {
         </Text>
         
         <CardSection>
-          <Button onPress={this.onButtonPress.bind(this)}>
-            Log in
-          </Button>
+          {this.renderButton()}
         </CardSection>
       </Card>
     )
