@@ -15,4 +15,3 @@ android:
 script:
 - cd android
 - ./gradlew bundleReleaseJsAndAssets
-- ./gradlew assembleDebug
