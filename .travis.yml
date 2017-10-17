@@ -4,7 +4,6 @@ before_install:
 - node --version
 install:
 - npm install
-- react-native run-android
 android:
   components:
   - build-tools-23.0.1
