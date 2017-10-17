@@ -13,5 +13,4 @@ android:
   - extra-google-m2repository
   - addon-google_apis-google-16
 script:
-- cd android
-- ./gradlew bundleReleaseJsAndAssets
+- cd android && ./gradlew bundleReleaseJsAndAssets
