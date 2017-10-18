@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text } from 'react-native'
 import firebase from 'firebase';
 import { Button, Card, CardSection, Input, Spinner } from './common';
+import OauthForm from './OauthForm';
 
 class LoginForm extends Component {
   state = {  email   : '',
@@ -16,14 +17,9 @@ class LoginForm extends Component {
     // this.setState({error: '', loading: true});
     // let provider = new firebase.auth.FacebookAuthProvider();
     //
-    firebase.auth().signInWithRedirect('https://api.pinterest.com/oauth/?scope=read_public&client_id=4911971725215810382&state=768uyFys%20response_type=code&redirect_uri=https://pingredients-409c0.firebaseapp.com/__/auth/handler&response_type=code');
-    firebase.auth().signInWithEmailAndPassword(email,password)
-    .then(this.onLoginSuccess.bind(this))
-    .catch(() => {
-      firebase.auth().createUserWithEmailAndPassword(email,password)
-      .then(this.onLoginSuccess.bind(this))
-      .catch(this.onLoginFail.bind(this))
-    })
+    return (
+      <OauthForm/>
+    )
   }
   
   onLoginSuccess() {
