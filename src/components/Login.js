@@ -16,9 +16,11 @@ class LoginForm extends Component {
   }
   
   onButtonPress = () => {
+    console.log('button pressed');
     Linking.openURL('https://api.pinterest.com/oauth/?scope=read_public&client_id=4911971725215810382&state=768uyFys%20response_type=code&redirect_uri=https://pingredients&response_type=token')
     Linking.addEventListener( 'url', handleUrl.bind(this))
     function handleUrl(event) {
+      console.log('event: ', event);
       let accessToken = event.url.match(/\?(?:access_token)\=([\S\s]*?)\&/)[1];
       this.setState({access_token: accessToken})
     }
