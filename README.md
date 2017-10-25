@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/TravisHoover/Pingredients.svg?branch=master)](https://travis-ci.org/TravisHoover/Pingredients)
+
 ## Installation
 To install on an Android phone, create a file `local.properties` and <br>
 and place it in your `/android` directory that includes: <br>
