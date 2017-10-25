@@ -1,8 +1,6 @@
 import React from 'react';
 import { Text, View, Image, Linking } from 'react-native';
-import Card from './Card';
-import CardSection from './CardSection';
-import Button from './Button';
+import { Card, CardSection, Button } from '../common'
 
 const RecipeDetail = (props) => {
   return (
