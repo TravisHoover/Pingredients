@@ -71,6 +71,12 @@ class LoginForm extends Component {
           <Button onPress={this.logout.bind(this)}>
             Logout
           </Button>
+          <Button onPress={this.logout.bind(this)}>
+            Logout
+          </Button>
+          <Button onPress={this.logout.bind(this)}>
+            Logout
+          </Button>
         </ScrollView>
         </View>
       )
