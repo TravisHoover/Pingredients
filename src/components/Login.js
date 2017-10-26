@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Linking } from 'react-native';
+import { Linking, AsyncStorage, ScrollView, View } from 'react-native';
 import { Button, Card, CardSection, Spinner, RecipeList } from './common';
 
 class LoginForm extends Component {
@@ -8,11 +8,25 @@ class LoginForm extends Component {
     this.state = {
       email: '',
       password: '',
-      access_token: '',
+      access_token: null,
       error: '',
       loading: false,
       login: false,
     };
+  }
+  
+  componentWillMount() {
+    try {
+      AsyncStorage.getItem('access_token')
+      .then((key) => {
+        this.setState({
+          access_token: key,
+          login: true,
+        })
+      })
+    } catch (error) {
+      console.error(error);
+    }
   }
   
   onButtonPress = () => {
@@ -20,9 +34,21 @@ class LoginForm extends Component {
     Linking.addEventListener('url', handleUrl.bind(this))
     
     function handleUrl (event) {
-      let accessToken = event.url.match(/\?(?:access_token)\=([\S\s]*?)\&/)[1];
-      this.setState({access_token: accessToken, login: true})
+      try {
+        let accessToken = event.url.match(/\?(?:access_token)\=([\S\s]*?)\&/)[1];
+        AsyncStorage.setItem('access_token', accessToken)
+        this.setState({access_token: accessToken, login: true})
+      } catch (error) {
+        console.log('permission denied');
+      }
     }
+  }
+  
+  logout() {
+    AsyncStorage.removeItem('access_token')
+    .then(() => {
+      this.setState({access_token: null, login: false})
+    })
   }
   
   renderButton () {
@@ -37,11 +63,24 @@ class LoginForm extends Component {
   }
   
   render () {
-    console.log('state: ', this.state);
-    if (this.state.login) {
-      return <RecipeList/>
-    }
-    if (!this.state.login) {
+    if (this.state.login && this.state.access_token) {
+      return (
+        <View>
+        <ScrollView>
+          <RecipeList/>
+          <Button onPress={this.logout.bind(this)}>
+            Logout
+          </Button>
+          <Button onPress={this.logout.bind(this)}>
+            Logout
+          </Button>
+          <Button onPress={this.logout.bind(this)}>
+            Logout
+          </Button>
+        </ScrollView>
+        </View>
+      )
+    } else {
       return (
         <Card>
           <CardSection>
