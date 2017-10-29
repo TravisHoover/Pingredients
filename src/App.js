@@ -26,7 +26,6 @@ class App extends Component {
   render() {
     return (
       <View>
-        <Header headerText="Pingredients"/>
         {this.renderContent()}
       </View>
     );

@@ -67,13 +67,7 @@ class LoginForm extends Component {
       return (
         <View>
         <ScrollView>
-          <RecipeList/>
-          <Button onPress={this.logout.bind(this)}>
-            Logout
-          </Button>
-          <Button onPress={this.logout.bind(this)}>
-            Logout
-          </Button>
+          <RecipeList access_token={this.state.access_token}/>
           <Button onPress={this.logout.bind(this)}>
             Logout
           </Button>

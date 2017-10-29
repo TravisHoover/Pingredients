@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, Image, Linking } from 'react-native';
-import { Card, CardSection, Button } from '../common'
+import { Card, CardSection, Button } from '../common';
 
 const RecipeDetail = (props) => {
   return (
@@ -9,17 +9,17 @@ const RecipeDetail = (props) => {
       <CardSection>
         <View style={styles.recipeContainerStyle}>
           <Image style={styles.thumbnailStyle}
-                 source={{uri: props.recipe.thumbnail_image}} />
+                 source={{uri: props.recipe.image.original.url}} />
         </View>
         <View style={styles.headerContentStyle}>
-          <Text style={styles.headerTextStyle}>{props.recipe.title}</Text>
-          <Text>{props.recipe.description}</Text>
+          <Text style={styles.headerTextStyle}>{props.recipe.metadata.link.title}</Text>
+          <Text>{props.recipe.metadata.link.description}</Text>
         </View>
       </CardSection>
       
       <CardSection>
         <Image style={styles.imageStyle}
-               source={{uri: props.recipe.image}}/>
+               source={{uri: props.recipe.image.original.url}}/>
       </CardSection>
       
       <CardSection>
