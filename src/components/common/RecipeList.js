@@ -6,15 +6,17 @@ import { RecipeDetail, Spinner } from '../common';
 class RecipeList extends Component {
   constructor(props) {
     super(props);
-    
     this.state = {
       recipes: [],
+      username: this.props.username,
       access_token: this.props.access_token,
     }
   }
   
   componentWillMount() {
-    axios.get('https://api.pinterest.com/v1/boards/traviskhoover/recipes/pins/?access_token='
+    axios.get('https://api.pinterest.com/v1/boards/'
+      + this.state.username
+      + '/recipes/pins/?access_token='
       + this.state.access_token
       + '&fields=id%2Clink%2Cnote%2Curl%2Cmetadata%2Cimage')
     .then(response => this.setState({recipes: response.data}))

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { Linking, AsyncStorage, ScrollView, View } from 'react-native';
 import { Button, Card, CardSection, Spinner, RecipeList } from './common';
 
@@ -9,7 +10,7 @@ class LoginForm extends Component {
       email: '',
       password: '',
       access_token: null,
-      error: '',
+      username: null,
       loading: false,
       login: false,
     };
@@ -37,9 +38,16 @@ class LoginForm extends Component {
       try {
         let accessToken = event.url.match(/\?(?:access_token)\=([\S\s]*?)\&/)[1];
         AsyncStorage.setItem('access_token', accessToken)
-        this.setState({access_token: accessToken, login: true})
+        this.setState({access_token: accessToken}, () => {
+          axios.get('https://api.pinterest.com/v1/me/?access_token='
+            + this.state.access_token
+            + '&fields=first_name%2Cid%2Clast_name%2Curl%2Cusername')
+          .then(response => {
+            this.setState({username: response.data.data.username, login: true})
+          })
+        })
       } catch (error) {
-        console.log('permission denied');
+        console.error('permission denied');
       }
     }
   }
@@ -63,11 +71,11 @@ class LoginForm extends Component {
   }
   
   render () {
-    if (this.state.login && this.state.access_token) {
+    if (this.state.login && this.state.access_token && this.state.username) {
       return (
         <View>
         <ScrollView>
-          <RecipeList access_token={this.state.access_token}/>
+          <RecipeList access_token={this.state.access_token} username={this.state.username}/>
           <Button onPress={this.logout.bind(this)}>
             Logout
           </Button>
