@@ -7,12 +7,9 @@ class LoginForm extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
       access_token: null,
       username: null,
       loading: false,
-      login: false,
     };
   }
   
@@ -21,8 +18,13 @@ class LoginForm extends Component {
       AsyncStorage.getItem('access_token')
       .then((key) => {
         this.setState({
-          access_token: key,
-          login: true,
+          access_token: key
+        })
+      })
+      AsyncStorage.getItem('username')
+        .then((key) => {
+        this.setState({
+          username: key
         })
       })
     } catch (error) {
@@ -43,7 +45,8 @@ class LoginForm extends Component {
             + this.state.access_token
             + '&fields=first_name%2Cid%2Clast_name%2Curl%2Cusername')
           .then(response => {
-            this.setState({username: response.data.data.username, login: true})
+            this.setState({username: response.data.data.username})
+            AsyncStorage.setItem('username', response.data.data.username)
           })
         })
       } catch (error) {
@@ -55,13 +58,13 @@ class LoginForm extends Component {
   logout() {
     AsyncStorage.removeItem('access_token')
     .then(() => {
-      this.setState({access_token: null, login: false})
+      this.setState({access_token: null, username: null})
     })
   }
   
   renderButton () {
     if (this.state.loading) {
-      return <Spinner size={'small'}/>
+      return <Spinner size={'large'}/>
     }
     return (
       <Button onPress={this.onButtonPress.bind(this)}>
@@ -71,7 +74,7 @@ class LoginForm extends Component {
   }
   
   render () {
-    if (this.state.login && this.state.access_token && this.state.username) {
+    if (this.state.access_token && this.state.username) {
       return (
         <View>
         <ScrollView>
