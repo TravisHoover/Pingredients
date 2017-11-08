@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Linking, AsyncStorage, ScrollView, View } from 'react-native';
 import { Button, Card, CardSection, Spinner, RecipeList } from './common';
+import { Boards } from './common/Boards'
 
 class LoginForm extends Component {
   constructor (props) {
@@ -9,6 +10,7 @@ class LoginForm extends Component {
     this.state = {
       access_token: null,
       username: null,
+      board: null,
       loading: false,
     };
   }
@@ -27,9 +29,19 @@ class LoginForm extends Component {
           username: key
         })
       })
+      AsyncStorage.getItem('board')
+        .then((key) => {
+        this.setState({
+          board: key || null
+        })
+      })
     } catch (error) {
       console.error(error);
     }
+  }
+  
+  getBoard(event) {
+    this.setState({ board: event })
   }
   
   onButtonPress = () => {
@@ -74,16 +86,20 @@ class LoginForm extends Component {
   }
   
   render () {
-    if (this.state.access_token && this.state.username) {
+    if (this.state.access_token && this.state.username && this.state.board) {
       return (
         <View>
         <ScrollView>
-          <RecipeList access_token={this.state.access_token} username={this.state.username}/>
+          <RecipeList access_token={this.state.access_token} username={this.state.username} board={this.state.board}/>
           <Button onPress={this.logout.bind(this)}>
             Logout
           </Button>
         </ScrollView>
         </View>
+      )
+    } else if (this.state.access_token && this.state.username && !this.state.board) {
+      return (
+        <Boards getBoard={this.getBoard.bind(this)} access_token={this.state.access_token}/>
       )
     } else {
       return (

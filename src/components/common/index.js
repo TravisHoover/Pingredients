@@ -6,3 +6,4 @@ export * from './Input';
 export * from './RecipeDetail';
 export * from './RecipeList';
 export * from './Spinner';
+export * from './Boards';

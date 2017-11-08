@@ -9,6 +9,7 @@ class RecipeList extends Component {
     this.state = {
       recipes: [],
       username: this.props.username,
+      board: this.props.board,
       access_token: this.props.access_token,
     }
   }
@@ -16,7 +17,7 @@ class RecipeList extends Component {
   componentWillMount() {
     axios.get('https://api.pinterest.com/v1/boards/'
       + this.state.username
-      + '/recipes/pins/?access_token='
+      + '/' + this.state.board + '/pins/?access_token='
       + this.state.access_token
       + '&fields=id%2Clink%2Cnote%2Curl%2Cmetadata%2Cimage')
     .then(response => this.setState({recipes: response.data}))
