@@ -41,6 +41,7 @@ class LoginForm extends Component {
   }
   
   getBoard(event) {
+    AsyncStorage.setItem('board', event);
     this.setState({ board: event })
   }
   

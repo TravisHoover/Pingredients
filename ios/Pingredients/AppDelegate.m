@@ -15,24 +15,7 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application
-        openURL:(NSURL *)url
- sourceApplication:(NSString *)sourceApplication
-     annotation:(id)annotation {
-NSLog(@"%@",sourceApplication);
 
-
-// Handle Google+ sign-in button URL.
-if ([signInButton_ handleURL:url
-           sourceApplication:sourceApplication
-                  annotation:annotation]) {
-    return YES;
-}
-
-
-
- return NO;
-}
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
   return [RCTLinkingManager application:application openURL:url sourceApplication:sourceApplication annotation:annotation];

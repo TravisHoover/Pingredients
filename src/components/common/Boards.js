@@ -24,7 +24,6 @@ class Boards extends Component {
   onButtonPress(board){
     let boardForUrl = (board.url.match(/([^\/]*)\/*$/)[1]);
     this.props.getBoard(boardForUrl)
-    AsyncStorage.setItem('board', boardForUrl);
   }
   
   renderBoards() {

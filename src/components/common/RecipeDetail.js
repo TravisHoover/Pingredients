@@ -23,8 +23,8 @@ const RecipeDetail = (props) => {
       </CardSection>
       
       <CardSection>
-        <Button onPress={() => Linking.openURL(props.recipe.url)}>
-          See on Pinterest!
+        <Button onPress={this.onButtonPress.bind(this)}>
+          Add to list
         </Button>
       </CardSection>
     </Card>
