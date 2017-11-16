@@ -17,23 +17,20 @@ class LoginForm extends Component {
   
   componentWillMount() {
     try {
-      AsyncStorage.getItem('access_token')
-      .then((key) => {
-        this.setState({
-          access_token: key
-        })
-      })
-      AsyncStorage.getItem('username')
-        .then((key) => {
-        this.setState({
-          username: key
-        })
-      })
-      AsyncStorage.getItem('board')
-        .then((key) => {
-        this.setState({
-          board: key || null
-        })
+      let access_token,
+          username,
+          board;
+      AsyncStorage.multiGet(['access_token', 'username', 'board']).then((data) => {
+        if (data[0][1]) {
+          access_token = data[0][1] || null;
+        }
+        if (data[1][1]) {
+          username = data[1][1] || null;
+        }
+        if (data[2][1]) {
+          board = data[2][1] || null;
+        }
+        this.setState({ access_token: access_token, username: username, board: board })
       })
     } catch (error) {
       console.error(error);
@@ -71,7 +68,7 @@ class LoginForm extends Component {
   logout() {
     AsyncStorage.removeItem('access_token')
     .then(() => {
-      this.setState({access_token: null, username: null})
+      this.setState({access_token: null, username: null, board: null})
     })
   }
   
@@ -87,6 +84,7 @@ class LoginForm extends Component {
   }
   
   render () {
+    console.log('state at render in login: ', this.state);
     if (this.state.access_token && this.state.username && this.state.board) {
       return (
         <View>

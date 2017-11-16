@@ -3,6 +3,9 @@ import { Text, View, Image, Linking } from 'react-native';
 import { Card, CardSection, Button } from '../common';
 
 const RecipeDetail = (props) => {
+  
+  console.log('props: ', props.recipe);
+  // at this point I have access to the recipe. It is an array arranged by categories
   return (
     <Card>
       
