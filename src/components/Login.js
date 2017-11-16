@@ -20,19 +20,23 @@ class LoginForm extends Component {
       let access_token,
           username,
           board;
-      AsyncStorage.multiGet(['access_token', 'username', 'board']).then((data) => {
-        if (data[0][1]) {
-          access_token = data[0][1] || null;
-        }
-        if (data[1][1]) {
-          username = data[1][1] || null;
-        }
-        if (data[2][1]) {
-          board = data[2][1] || null;
-        }
-        this.setState({ access_token: access_token, username: username, board: board })
+      AsyncStorage.getItem('access_token')
+      .then((key) => {
+        access_token = key || null;
+      }).then(() => {
+        AsyncStorage.getItem('username')
+        .then((key) => {
+          username = key || null;
+        }).then(() => {
+          AsyncStorage.getItem('board')
+          .then((key) => {
+            board = key || null;
+          }).then(() => {
+            this.setState({ access_token: access_token, username: username, board: board })
+          })
+        })
       })
-    } catch (error) {
+      } catch (error) {
       console.error(error);
     }
   }
@@ -85,7 +89,7 @@ class LoginForm extends Component {
   
   render () {
     console.log('state at render in login: ', this.state);
-    if (this.state.access_token && this.state.username && this.state.board) {
+    if (this.state.access_token && this.state.username && this.state.board !== null) {
       return (
         <View>
         <ScrollView>
@@ -96,7 +100,7 @@ class LoginForm extends Component {
         </ScrollView>
         </View>
       )
-    } else if (this.state.access_token && this.state.username && !this.state.board) {
+    } else if (this.state.access_token && this.state.username && this.state.board === null) {
       return (
         <Boards getBoard={this.getBoard.bind(this)} access_token={this.state.access_token}/>
       )

@@ -4,6 +4,10 @@ import { Card, CardSection, Button } from '../common';
 
 const RecipeDetail = (props) => {
   
+  onButtonPress = () => {
+    console.log('button pressed');
+  }
+  
   console.log('props: ', props.recipe);
   // at this point I have access to the recipe. It is an array arranged by categories
   return (
