@@ -20,7 +20,9 @@ const styles = {
     borderRadius: 1,
     borderColor: '#C92228',
     marginLeft: 5,
-    marginRight: 5
+    marginRight: 5,
+    paddingTop: 10,
+    paddingBottom: 10
   },
   textStyle: {
     alignSelf: 'center',

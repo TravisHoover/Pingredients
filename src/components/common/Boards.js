@@ -3,6 +3,7 @@ import { ScrollView, AsyncStorage } from 'react-native';
 import axios from 'axios';
 import { Button, Spinner } from '../common';
 import LoginForm from '../Login'
+import { Header } from './Header'
 
 class Boards extends Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class Boards extends Component {
     if (this.state.boards.data && this.state.boards.data.length > 0) {
       return (
         <ScrollView>
+          <Header headerText="Please select a board"/>
           {this.renderBoards()}
         </ScrollView>
       )
