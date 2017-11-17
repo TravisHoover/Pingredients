@@ -100,14 +100,14 @@ class LoginForm extends Component {
       )
     } else {
       return (
-        <Card>
+        <View style={{justifyContent: 'center', alignItems: 'center'}}>
           <Image
-            style={{justifyContent: 'center', alignItems: 'center', width: 400, height: 400}}
+            style={{resizeMode: 'contain'}}
             source={require('../../android/app/src/main/ic_launcher-web.png')}/>
           <CardSection>
             {this.renderButton()}
           </CardSection>
-        </Card>
+        </View>
       )
     }
   }
