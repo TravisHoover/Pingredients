@@ -1,42 +1,49 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Text, View, Image, Linking } from 'react-native';
 import { Card, CardSection, Button } from '../common';
 
-const RecipeDetail = (props) => {
-  
-  onButtonPress = () => {
-    console.log('button pressed');
+class RecipeDetail extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      boards: [],
+      boardName: null,
+      recipe: this.props.recipe,
+    }
   }
   
-  console.log('props: ', props.recipe);
-  // at this point I have access to the recipe. It is an array arranged by categories
-  return (
-    <Card>
+  onButtonPress = () => {
+    this.props.addToList(this.props.recipe.metadata.recipe.ingredients);
+  }
+  
+  render() {
+    return (
+      <Card>
+        <CardSection>
+          <View style={styles.recipeContainerStyle}>
+            <Image style={styles.thumbnailStyle}
+                   source={{uri: this.props.recipe.image.original.url}}/>
+          </View>
+          <View style={styles.headerContentStyle}>
+            <Text style={styles.headerTextStyle}>{this.props.recipe.metadata.link.title}</Text>
+            <Text>{this.props.recipe.metadata.link.description}</Text>
+          </View>
+        </CardSection>
       
-      <CardSection>
-        <View style={styles.recipeContainerStyle}>
-          <Image style={styles.thumbnailStyle}
-                 source={{uri: props.recipe.image.original.url}} />
-        </View>
-        <View style={styles.headerContentStyle}>
-          <Text style={styles.headerTextStyle}>{props.recipe.metadata.link.title}</Text>
-          <Text>{props.recipe.metadata.link.description}</Text>
-        </View>
-      </CardSection>
+        <CardSection>
+          <Image style={styles.imageStyle}
+                 source={{uri: this.props.recipe.image.original.url}}/>
+        </CardSection>
       
-      <CardSection>
-        <Image style={styles.imageStyle}
-               source={{uri: props.recipe.image.original.url}}/>
-      </CardSection>
-      
-      <CardSection>
-        <Button onPress={this.onButtonPress.bind(this)}>
-          Add to list
-        </Button>
-      </CardSection>
-    </Card>
-  )
-};
+        <CardSection>
+          <Button onPress={this.onButtonPress.bind(this)}>
+            Add to list
+          </Button>
+        </CardSection>
+      </Card>
+    )
+  }
+}
 
 const styles = {
   headerContentStyle: {

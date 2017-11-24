@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, AsyncStorage } from 'react-native';
+import { ScrollView } from 'react-native';
 import axios from 'axios';
 import { Button, Spinner } from '../common';
 import LoginForm from '../Login'

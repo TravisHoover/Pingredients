@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import { ScrollView, Text } from 'react-native';
 import axios from 'axios';
-import { RecipeDetail, Spinner } from '../common';
+import { RecipeDetail, Spinner, Button } from '../common';
+import { ShoppingList } from '../ShoppingList'
 
 class RecipeList extends Component {
   constructor(props) {
     super(props);
+    this.addToList = this.addToList.bind(this);
     this.state = {
       recipes: [],
       username: this.props.username,
       board: this.props.board,
       access_token: this.props.access_token,
+      ingredientList: [],
     }
   }
   
@@ -25,15 +28,44 @@ class RecipeList extends Component {
   
   renderRecipes() {
     return this.state.recipes.data.map(recipe =>
-      <RecipeDetail key={recipe.metadata.article.name} recipe={recipe}/>
+      <RecipeDetail
+        addToList={this.addToList}
+        key={recipe.metadata.article.name}
+        recipe={recipe}/>
     );
   }
   
+  showList() {
+    console.log('showList is called');
+    return (
+      <ShoppingList ingredientList={this.state.ingredientList}/>
+    )
+  }
+  
+  addToList(event) {
+      let oldStateArray = this.state.ingredientList.slice()
+      oldStateArray.push(event)
+      //AsyncStorage.setItem();
+      this.setState({ingredientList: oldStateArray})
+  }
+  
   render() {
-    if (this.state.recipes.data && this.state.recipes.data.length > 0) {
+    console.log('ingredients list: ', this.state.ingredientList);
+    console.log('length of list: ', this.state.ingredientList.length);
+    if (this.state.recipes.data && this.state.recipes.data.length > 0 && this.state.ingredientList.length === 0) {
       return (
         <ScrollView>
           {this.renderRecipes()}
+        </ScrollView>
+      )
+    }
+    if (this.state.ingredientList.length > 0) {
+      return (
+        <ScrollView>
+          {this.renderRecipes()}
+          <Button onPress={this.showList.bind(this)}>
+            Show list
+          </Button>
         </ScrollView>
       )
     } else {

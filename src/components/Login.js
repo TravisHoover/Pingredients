@@ -85,13 +85,13 @@ class LoginForm extends Component {
     if (this.state.access_token && this.state.username && this.state.board !== null) {
       return (
         <View>
-        <ScrollView>
-          <Header headerText='Pingredients'/>
-          <RecipeList access_token={this.state.access_token} username={this.state.username} board={this.state.board}/>
-          <Button onPress={this.logout.bind(this)}>
-            Logout
-          </Button>
-        </ScrollView>
+          <ScrollView>
+            <Header headerText='Pingredients'/>
+            <RecipeList access_token={this.state.access_token} username={this.state.username} board={this.state.board}/>
+            <Button onPress={this.logout.bind(this)}>
+              Logout
+            </Button>
+          </ScrollView>
         </View>
       )
     } else if (this.state.access_token && this.state.username && this.state.board === null) {
