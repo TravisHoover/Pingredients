@@ -7,3 +7,4 @@ export * from './RecipeDetail';
 export * from './RecipeList';
 export * from './Spinner';
 export * from './Boards';
+export * from './IngredientDetails';

@@ -14,7 +14,7 @@ class RecipeDetail extends Component {
   
   onButtonPress = () => {
     this.props.addToList(this.props.recipe.metadata.recipe.ingredients);
-  }
+  };
   
   render() {
     return (
@@ -26,7 +26,6 @@ class RecipeDetail extends Component {
           </View>
           <View style={styles.headerContentStyle}>
             <Text style={styles.headerTextStyle}>{this.props.recipe.metadata.link.title}</Text>
-            <Text>{this.props.recipe.metadata.link.description}</Text>
           </View>
         </CardSection>
       

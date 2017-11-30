@@ -41,32 +41,32 @@ class LoginForm extends Component {
   onButtonPress = () => {
     
     Linking.openURL('https://api.pinterest.com/oauth/?scope=read_public%2Cwrite_public&client_id=4911971725215810382&state=768uyFys%20response_type=code&redirect_uri=https://pingredients&response_type=token')
-    Linking.addEventListener('url', handleUrl.bind(this))
+    Linking.addEventListener('url', handleUrl.bind(this));
     
     function handleUrl (event) {
       try {
         let accessToken = event.url.match(/\?(?:access_token)\=([\S\s]*?)\&/)[1];
-        AsyncStorage.setItem('access_token', accessToken)
+        AsyncStorage.setItem('access_token', accessToken);
         axios.get('https://api.pinterest.com/v1/me/?access_token='
           + accessToken
           + '&fields=username')
         .then(response => {
-          this.setState({access_token: accessToken, username: response.data.data.username})
+          this.setState({access_token: accessToken, username: response.data.data.username});
           AsyncStorage.setItem('username', response.data.data.username)
         })
       } catch (error) {
         console.error('permission denied');
       }
     }
-  }
+  };
   
   logout() {
     AsyncStorage.removeItem('access_token')
     .then(() => {
-      this.setState({access_token: null, username: null, board: null})
-      AsyncStorage.removeItem('access_token')
-      AsyncStorage.removeItem('username')
-      AsyncStorage.removeItem('board')
+      this.setState({access_token: null, username: null, board: null});
+      AsyncStorage.removeItem('access_token');
+      AsyncStorage.removeItem('username');
+      AsyncStorage.removeItem('board');
     })
   }
   

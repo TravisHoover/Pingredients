@@ -43,8 +43,8 @@ class RecipeList extends Component {
   }
   
   addToList(event) {
-      let oldStateArray = this.state.ingredientList.slice()
-      oldStateArray.push(event)
+      let oldStateArray = this.state.ingredientList.slice();
+      oldStateArray.push(event);
       //AsyncStorage.setItem();
       this.setState({ingredientList: oldStateArray})
   }
@@ -61,12 +61,8 @@ class RecipeList extends Component {
     }
     if (this.state.ingredientList.length > 0) {
       return (
-        <ScrollView>
-          {this.renderRecipes()}
-          <Button onPress={this.showList.bind(this)}>
-            Show list
-          </Button>
-        </ScrollView>
+	      <ShoppingList ingredientList={this.state.ingredientList}/>
+
       )
     } else {
       return <Spinner/>
