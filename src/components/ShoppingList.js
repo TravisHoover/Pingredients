@@ -21,9 +21,6 @@ class ShoppingList extends Component {
   }
   
   render() {
-    this.state.ingredients.map(recipe =>
-      console.log('recipe: ', recipe)
-    );
     return (
 	    <ScrollView>
 		    {this.renderIngredients()}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View, Image, Linking } from 'react-native';
-import { Card, CardSection, Button } from '../common';
+import { Text, View } from 'react-native';
+import { Card, CardSection } from '../common';
 
 class IngredientDetails extends Component {
 	constructor(props) {
@@ -25,7 +25,6 @@ class IngredientDetails extends Component {
 	}
 
 	render() {
-		console.log('this.props in ingredientDetails: ', this.props);
 		return (
 			<Card>
 				<CardSection>

@@ -36,7 +36,6 @@ class RecipeList extends Component {
   }
   
   showList() {
-    console.log('showList is called');
     return (
       <ShoppingList ingredientList={this.state.ingredientList}/>
     )
@@ -50,8 +49,6 @@ class RecipeList extends Component {
   }
   
   render() {
-    console.log('ingredients list: ', this.state.ingredientList);
-    console.log('length of list: ', this.state.ingredientList.length);
     if (this.state.recipes.data && this.state.recipes.data.length > 0 && this.state.ingredientList.length === 0) {
       return (
         <ScrollView>
