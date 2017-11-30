@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import axios from 'axios';
 import { RecipeDetail, Spinner, Button } from '../common';
 import { ShoppingList } from '../ShoppingList'
@@ -14,6 +14,7 @@ class RecipeList extends Component {
       board: this.props.board,
       access_token: this.props.access_token,
       ingredientList: [],
+      showList: false,
     }
   }
   
@@ -27,18 +28,30 @@ class RecipeList extends Component {
   }
   
   renderRecipes() {
-    return this.state.recipes.data.map(recipe =>
-      <RecipeDetail
-        addToList={this.addToList}
-        key={recipe.metadata.article.name}
-        recipe={recipe}/>
-    );
+    return !this.state.showList
+      ? this.state.recipes.data.map(recipe =>
+        <RecipeDetail
+          addToList={this.addToList}
+          key={recipe.metadata.article.name}
+          recipe={recipe}/>
+        )
+      : null;
   }
   
   showList() {
-    return (
-      <ShoppingList ingredientList={this.state.ingredientList}/>
-    )
+    if (this.state.showList) {
+	    return (
+		    <ShoppingList ingredientList={this.state.ingredientList}/>
+	    )
+    } else {
+      return <Button onPress={this.onButtonPress.bind(this)}>
+	      Show list
+      </Button>;
+    }
+  }
+
+  onButtonPress() {
+    this.setState({showList: true})
   }
   
   addToList(event) {
@@ -58,8 +71,10 @@ class RecipeList extends Component {
     }
     if (this.state.ingredientList.length > 0) {
       return (
-	      <ShoppingList ingredientList={this.state.ingredientList}/>
-
+        <ScrollView>
+          {this.renderRecipes()}
+          {this.showList()}
+        </ScrollView>
       )
     } else {
       return <Spinner/>
