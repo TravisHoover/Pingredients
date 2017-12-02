@@ -17,30 +17,57 @@ class RecipeDetail extends Component {
   };
   
   render() {
-    return (
-      <Card>
-        <CardSection>
-          <View style={styles.recipeContainerStyle}>
-            <Image style={styles.thumbnailStyle}
-                   source={{uri: this.props.recipe.image.original.url}}/>
-          </View>
-          <View style={styles.headerContentStyle}>
-            <Text style={styles.headerTextStyle}>{this.props.recipe.metadata.link.title}</Text>
-          </View>
-        </CardSection>
-      
-        <CardSection>
-          <Image style={styles.imageStyle}
-                 source={{uri: this.props.recipe.image.original.url}}/>
-        </CardSection>
-      
-        <CardSection>
-          <Button onPress={this.onButtonPress.bind(this)}>
-            Add to list
-          </Button>
-        </CardSection>
-      </Card>
-    )
+    if (this.props.recipe.metadata.recipe.ingredients) {
+	    return (
+		    <Card>
+			    <CardSection>
+				    <View style={styles.recipeContainerStyle}>
+					    <Image style={styles.thumbnailStyle}
+					           source={{uri: this.props.recipe.image.original.url}}/>
+				    </View>
+				    <View style={styles.headerContentStyle}>
+					    <Text style={styles.headerTextStyle}>{this.props.recipe.metadata.link.title}</Text>
+				    </View>
+			    </CardSection>
+
+			    <CardSection>
+				    <Image style={styles.imageStyle}
+				           source={{uri: this.props.recipe.image.original.url}}/>
+			    </CardSection>
+
+			    <CardSection>
+				    <Button onPress={this.onButtonPress.bind(this)}>
+					    Add to list
+				    </Button>
+			    </CardSection>
+		    </Card>
+	    )
+    } else {
+	    return (
+		    <Card>
+			    <CardSection>
+				    <View style={styles.recipeContainerStyle}>
+					    <Image style={styles.thumbnailStyle}
+					           source={{uri: this.props.recipe.image.original.url}}/>
+				    </View>
+				    <View style={styles.headerContentStyle}>
+					    <Text style={styles.headerTextStyle}>{this.props.recipe.metadata.link.title}</Text>
+				    </View>
+			    </CardSection>
+
+			    <CardSection>
+				    <Image style={styles.imageStyle}
+				           source={{uri: this.props.recipe.image.original.url}}/>
+			    </CardSection>
+
+			    <CardSection>
+				    <Button>
+					    No ingredients in recipe
+				    </Button>
+			    </CardSection>
+		    </Card>
+	    )
+    }
   }
 }
 
