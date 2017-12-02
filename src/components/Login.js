@@ -103,7 +103,7 @@ class LoginForm extends Component {
         <View style={{justifyContent: 'center', alignItems: 'center'}}>
           <Image
             style={{resizeMode: 'contain'}}
-            source={require('../../android/app/src/main/ic_launcher-web.png')}/>
+            source={require('../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png')}/>
           <CardSection>
             {this.renderButton()}
           </CardSection>

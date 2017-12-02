@@ -11,19 +11,35 @@ class ShoppingList extends Component {
 	  };
   }
 
-  renderIngredients() {
-    return this.props.ingredientList.map(ingredients =>
-      <IngredientDetails
-        addToList={this.addToList}
-        key={ingredients.category}
-        ingredients={ingredients}/>
-    );
+  combineIngredientList() {
+	  let categories = [];
+	  let compiledList = [];
+
+  	this.props.ingredientList.map(list => {
+  		list.map(subItems => {
+  			let index = categories.findIndex(i => i.category === subItems.category);
+			  if (index === -1) {
+				  categories.push({category: subItems.category});
+				  compiledList.push(subItems);
+			  } else {
+				  subItems.ingredients.map(ingredient => {
+				  	compiledList[index].ingredients.push(ingredient);
+				  })
+			  }
+		  });
+	  });
+	  return (
+		  <IngredientDetails
+			  addToList={this.addToList}
+			  key={categories}
+			  ingredients={compiledList}/>
+	  )
   }
   
   render() {
     return (
 	    <ScrollView>
-		    {this.renderIngredients()}
+		    {this.combineIngredientList()}
 	    </ScrollView>
     );
   }
