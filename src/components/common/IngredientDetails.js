@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { Card, CardSection } from '../common';
+import {Button} from "./Button";
+import {ShoppingList} from "../ShoppingList";
 
 class IngredientDetails extends Component {
 	constructor(props) {
@@ -13,12 +15,8 @@ class IngredientDetails extends Component {
 	renderList() {
 		let rows = [];
 		this.props.ingredients.map((entry) => {
-			rows.push('\n', entry.category, '\n\n');
-			entry.ingredients.map((list) => {
-				rows.push(list.amount, '    ', list.name, '\n');
-			});
-			}
-		);
+			rows.push(entry.amount, '    ', entry.name, '\n');
+		});
 		return (
 			<Text>{rows}</Text>
 		)

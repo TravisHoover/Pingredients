@@ -100,7 +100,7 @@ class LoginForm extends Component {
       )
     } else {
       return (
-        <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <View style={{justifyContent: 'center', alignItems: 'center', marginTop: 200}}>
           <Image
             style={{resizeMode: 'contain'}}
             source={require('../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png')}/>

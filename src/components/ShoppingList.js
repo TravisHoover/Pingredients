@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import {IngredientDetails} from "./common";
 
 class ShoppingList extends Component {
@@ -28,12 +28,16 @@ class ShoppingList extends Component {
 			  }
 		  });
 	  });
-	  return (
-		  <IngredientDetails
-			  addToList={this.addToList}
-			  key={categories}
-			  ingredients={compiledList}/>
-	  )
+	  return compiledList.map(section =>
+		  <ScrollView>
+			  <Text style={{color: '#C92228', fontWeight: 'bold'}}> {section.category} </Text>
+			  <IngredientDetails
+				  addToList={this.addToList}
+				  key={section.category}
+				  ingredients={section.ingredients}/>
+		  </ScrollView>
+	  );
+
   }
   
   render() {

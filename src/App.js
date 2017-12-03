@@ -13,9 +13,9 @@ class App extends Component {
           <Button>
             Log Out
           </Button>
-        )
+        );
       case false:
-        return <LoginForm/>
+        return <LoginForm/>;
       default:
         return  <View style={{paddingTop: 200}}>
                   <Spinner size="large"/>

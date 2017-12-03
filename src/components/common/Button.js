@@ -15,13 +15,15 @@ const styles = {
   buttonStyle: {
     flex: 1,
     backgroundColor: '#C92228',
-    borderWidth: 5,
+    borderWidth: 4,
     borderRadius: 1,
     borderColor: '#C92228',
+    marginTop: 5,
+    marginBottom: 5,
     marginLeft: 5,
     marginRight: 5,
-    paddingTop: 10,
-    paddingBottom: 10
+    paddingTop: 9,
+    paddingBottom: 9
   },
   textStyle: {
     alignSelf: 'center',

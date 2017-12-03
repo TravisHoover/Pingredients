@@ -42,7 +42,7 @@ class Boards extends Component {
     if (this.state.boards.data && this.state.boards.data.length > 0) {
       return (
         <ScrollView>
-          <Header headerText="Please select a board"/>
+          <Header style={{marginBottom: 200}} headerText="Please select a board"/>
           {this.renderBoards()}
         </ScrollView>
       )
