@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { ScrollView } from 'react-native';
 import axios from 'axios';
 import { Button, Spinner } from '../common';
-import LoginForm from '../Login'
 import { Header } from './Header'
 
 class Boards extends Component {
@@ -47,7 +46,7 @@ class Boards extends Component {
         </ScrollView>
       )
     } else {
-      return <LoginForm/>
+      return <Spinner/>
     }
   }
 }
