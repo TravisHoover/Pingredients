@@ -15,19 +15,20 @@ class ShoppingList extends Component {
 	  let categories = [];
 	  let compiledList = [];
 
-  	this.props.ingredientList.map(list => {
+  	this.state.ingredients.map(list => {
   		list.map(subItems => {
   			let index = categories.findIndex(i => i.category === subItems.category);
 			  if (index === -1) {
 				  categories.push({category: subItems.category});
 				  compiledList.push(subItems);
 			  } else {
-				  subItems.ingredients.map(ingredient => {
-				  	compiledList[index].ingredients.push(ingredient);
-				  })
+			  	  subItems.ingredients.map(e => {
+			  	  	compiledList[index].ingredients.push(e);
+				    });
 			  }
 		  });
 	  });
+
 	  return compiledList.map(section =>
 		  <ScrollView>
 			  <Text style={{color: '#C92228', fontWeight: 'bold'}}> {section.category} </Text>
