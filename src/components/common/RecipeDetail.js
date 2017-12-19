@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
+import { Image, TouchableHighlight, Linking } from 'react-native';
 import { Card, CardSection, Button } from '../common';
 
 class RecipeDetail extends Component {
@@ -20,10 +20,12 @@ class RecipeDetail extends Component {
     if (this.props.recipe.metadata.recipe) {
 	    return (
 		    <Card>
-			    <CardSection>
-				    <Image style={styles.imageStyle}
+
+			    <TouchableHighlight
+				    onPress={() => Linking.openURL(this.props.recipe.url)}>
+			        <Image style={styles.imageStyle}
 				           source={{uri: this.props.recipe.image.original.url}}/>
-			    </CardSection>
+			    </TouchableHighlight>
 
 			    <CardSection>
 				    <Button onPress={this.onButtonPress.bind(this)}>
@@ -35,10 +37,12 @@ class RecipeDetail extends Component {
     } else {
 	    return (
 		    <Card>
-			    <CardSection>
-				    <Image style={styles.imageStyle}
+
+			    <TouchableHighlight
+			      onPress={() => Linking.openURL(this.props.recipe.url)}>
+				      <Image style={styles.imageStyle}
 				           source={{uri: this.props.recipe.image.original.url}}/>
-			    </CardSection>
+			    </TouchableHighlight>
 
 			    <CardSection>
 				    <Button>
