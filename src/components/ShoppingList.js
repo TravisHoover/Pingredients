@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView, Text } from 'react-native';
-import {IngredientDetails} from "./common";
+import { IngredientDetails } from "./common";
 
 class ShoppingList extends Component {
   

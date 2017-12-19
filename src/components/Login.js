@@ -69,6 +69,11 @@ class LoginForm extends Component {
       AsyncStorage.removeItem('board');
     })
   }
+
+  changeBoard() {
+    AsyncStorage.removeItem('board');
+    this.setState({ board: null })
+  }
   
   renderButton () {
     if (this.state.loading) {
@@ -88,6 +93,9 @@ class LoginForm extends Component {
           <ScrollView>
             <Header headerText='Pingredients'/>
             <RecipeList access_token={this.state.access_token} username={this.state.username} board={this.state.board}/>
+	          <Button onPress={this.changeBoard.bind(this)}>
+		          Change Boards
+	          </Button>
             <Button onPress={this.logout.bind(this)}>
               Logout
             </Button>
