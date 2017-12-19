@@ -32,7 +32,7 @@ class RecipeList extends Component {
       ? this.state.recipes.data.map(recipe =>
         <RecipeDetail
           addToList={this.addToList}
-          key={recipe.metadata.link.title}
+          key={recipe.note}
           recipe={recipe}/>
         )
       : null;

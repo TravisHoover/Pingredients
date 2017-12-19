@@ -17,7 +17,7 @@ class RecipeDetail extends Component {
   };
   
   render() {
-    if (this.props.recipe.metadata.recipe.ingredients) {
+    if (this.props.recipe.metadata.recipe) {
 	    return (
 		    <Card>
 			    <CardSection>
@@ -26,7 +26,7 @@ class RecipeDetail extends Component {
 					           source={{uri: this.props.recipe.image.original.url}}/>
 				    </View>
 				    <View style={styles.headerContentStyle}>
-					    <Text style={styles.headerTextStyle}>{this.props.recipe.metadata.link.title}</Text>
+					    <Text style={styles.headerTextStyle}>{this.props.recipe.note}</Text>
 				    </View>
 			    </CardSection>
 
@@ -51,7 +51,7 @@ class RecipeDetail extends Component {
 					           source={{uri: this.props.recipe.image.original.url}}/>
 				    </View>
 				    <View style={styles.headerContentStyle}>
-					    <Text style={styles.headerTextStyle}>{this.props.recipe.metadata.link.title}</Text>
+					    <Text style={styles.headerTextStyle}>{this.props.recipe.note}</Text>
 				    </View>
 			    </CardSection>
 
