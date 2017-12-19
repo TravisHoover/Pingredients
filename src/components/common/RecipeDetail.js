@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, Linking } from 'react-native';
+import { Image } from 'react-native';
 import { Card, CardSection, Button } from '../common';
 
 class RecipeDetail extends Component {
@@ -21,16 +21,6 @@ class RecipeDetail extends Component {
 	    return (
 		    <Card>
 			    <CardSection>
-				    <View style={styles.recipeContainerStyle}>
-					    <Image style={styles.thumbnailStyle}
-					           source={{uri: this.props.recipe.image.original.url}}/>
-				    </View>
-				    <View style={styles.headerContentStyle}>
-					    <Text style={styles.headerTextStyle}>{this.props.recipe.note}</Text>
-				    </View>
-			    </CardSection>
-
-			    <CardSection>
 				    <Image style={styles.imageStyle}
 				           source={{uri: this.props.recipe.image.original.url}}/>
 			    </CardSection>
@@ -45,16 +35,6 @@ class RecipeDetail extends Component {
     } else {
 	    return (
 		    <Card>
-			    <CardSection>
-				    <View style={styles.recipeContainerStyle}>
-					    <Image style={styles.thumbnailStyle}
-					           source={{uri: this.props.recipe.image.original.url}}/>
-				    </View>
-				    <View style={styles.headerContentStyle}>
-					    <Text style={styles.headerTextStyle}>{this.props.recipe.note}</Text>
-				    </View>
-			    </CardSection>
-
 			    <CardSection>
 				    <Image style={styles.imageStyle}
 				           source={{uri: this.props.recipe.image.original.url}}/>
