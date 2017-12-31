@@ -93,12 +93,14 @@ class LoginForm extends Component {
           <ScrollView>
             <Header headerText='Pingredients'/>
             <RecipeList access_token={this.state.access_token} username={this.state.username} board={this.state.board}/>
-	          <Button onPress={this.changeBoard.bind(this)}>
-		          New list
-	          </Button>
-            <Button onPress={this.logout.bind(this)}>
-              Logout
-            </Button>
+            <CardSection>
+              <Button onPress={this.changeBoard.bind(this)}>
+                New list
+              </Button>
+              <Button onPress={this.logout.bind(this)}>
+                Logout
+              </Button>
+            </CardSection>
           </ScrollView>
         </View>
       )
