@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { AdMobBanner } from 'react-native-admob';
 import { Linking, AsyncStorage, ScrollView, View, Image } from 'react-native';
-import { Button, Card, CardSection, Spinner, RecipeList } from './common';
+import { Button, CardSection, Spinner, RecipeList } from './common';
 import { Boards } from './common/Boards'
 import { Header } from './common/Header'
 
@@ -90,6 +91,11 @@ class LoginForm extends Component {
     if (this.state.access_token && this.state.username && this.state.board !== null) {
       return (
         <View>
+	        <AdMobBanner
+		        adSize="fullBanner"
+		        adUnitID="ca-app-pub-3940256099942544/6300978111"
+		        onAdFailedToLoad={error => console.error(error)}
+	        />
           <ScrollView>
             <Header headerText='Pingredients'/>
             <RecipeList access_token={this.state.access_token} username={this.state.username} board={this.state.board}/>
