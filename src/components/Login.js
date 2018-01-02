@@ -90,25 +90,23 @@ class LoginForm extends Component {
   render () {
     if (this.state.access_token && this.state.username && this.state.board !== null) {
       return (
-        <View>
-	        <AdMobBanner
-		        adSize="fullBanner"
-		        adUnitID="ca-app-pub-3940256099942544/6300978111"
-		        onAdFailedToLoad={error => console.error(error)}
-	        />
-          <ScrollView>
-            <Header headerText='Pingredients'/>
-            <RecipeList access_token={this.state.access_token} username={this.state.username} board={this.state.board}/>
-            <CardSection>
-              <Button onPress={this.changeBoard.bind(this)}>
-                New list
-              </Button>
-              <Button onPress={this.logout.bind(this)}>
-                Logout
-              </Button>
-            </CardSection>
-          </ScrollView>
-        </View>
+        <ScrollView>
+          <AdMobBanner
+            adSize="fullBanner"
+            adUnitID="ca-app-pub-3756584357781172/5074543574"
+            onAdFailedToLoad={error => console.error(error)}
+          />
+          <Header headerText='Pingredients'/>
+          <RecipeList access_token={this.state.access_token} username={this.state.username} board={this.state.board}/>
+          <CardSection>
+            <Button onPress={this.changeBoard.bind(this)}>
+              New list
+            </Button>
+            <Button onPress={this.logout.bind(this)}>
+              Logout
+            </Button>
+          </CardSection>
+        </ScrollView>
       )
     } else if (this.state.access_token && this.state.username && this.state.board === null) {
       return (
