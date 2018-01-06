@@ -45,9 +45,13 @@ class RecipeDetail extends Component {
 			    </TouchableHighlight>
 
 			    <CardSection>
-				    <Button>
-					    No ingredients in recipe
-				    </Button>
+				    <TouchableHighlight
+					    onPress={() => Linking.openURL(this.props.recipe.url)}>
+					    <Button>
+						    No ingredients on Pin{"\n"}
+						    Open on Pinterest
+					    </Button>
+				    </TouchableHighlight>
 			    </CardSection>
 		    </Card>
 	    )
