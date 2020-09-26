@@ -12,7 +12,7 @@
     "react": "16.0.0-alpha.12",
     "react-native": "0.48.2",
     "react-native-admob": "~2.0.0-beta.4",
-    "react-navigation": "~1.0.0-beta.13",
+    "react-navigation": "~4.4.1",
     "watchman": "~0.1.8"
   },
   "devDependencies": {
