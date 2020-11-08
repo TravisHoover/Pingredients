@@ -1,5 +1,5 @@
 {
-  "name": "Pingredients",
+  "name": "pingredients",
   "version": "0.0.1",
   "private": false,
   "scripts": {
@@ -10,24 +10,20 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "axios": "~0.16.2",
+    "axios": "^0.21.0",
     "expo": "~39.0.2",
     "expo-status-bar": "~1.0.2",
-    "firebase": "~4.5.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
     "react-native-admob": "~2.0.0-beta.4",
-    "react-native-web": "~0.13.12",
-    "react-navigation": "~1.0.0-beta.13",
-    "watchman": "~0.1.8"
+    "react-native-web": "~0.13.12"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "babel-jest": "21.0.2",
     "babel-preset-react-native": "3.0.2",
-    "jest": "21.0.2",
-    "react-test-renderer": "16.0.0-alpha.12"
+    "jest": "21.0.2"
   }
 }
