@@ -1,7 +1,7 @@
 {
   "name": "Pingredients",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",

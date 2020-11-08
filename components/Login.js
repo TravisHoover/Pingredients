@@ -56,7 +56,7 @@ class LoginForm extends Component {
           AsyncStorage.setItem('username', response.data.data.username)
         })
       } catch (error) {
-        console.error('permission denied',);
+        console.error('permission denied', error);
       }
     }
   };
