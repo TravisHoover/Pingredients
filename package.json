@@ -10,7 +10,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "axios": "~0.16.2",
+    "axios": "~0.18.1",
     "expo": "~39.0.2",
     "expo-status-bar": "~1.0.2",
     "firebase": "~4.5.1",
