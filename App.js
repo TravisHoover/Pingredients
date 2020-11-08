@@ -6,6 +6,7 @@ import LoginForm from './components/Login';
 class App extends Component {
   state = { loggedIn: false };
   
+
   renderContent() {
     switch (this.state.loggedIn) {
       case true:

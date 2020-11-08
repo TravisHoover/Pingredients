@@ -41,7 +41,7 @@ class LoginForm extends Component {
   
   onButtonPress = () => {
     
-    Linking.openURL('https://api.pinterest.com/oauth/?scope=read_public%2Cwrite_public&client_id=4938964167940912181&state=768uyFys%20response_type=code&redirect_uri=https://pingredients&response_type=token')
+    Linking.openURL('https://api.pinterest.com/oauth/?scope=read_public%2Cwrite_public&client_id=4911971725215810382&state=768uyFys%20response_type=code&redirect_uri=https://pingredients&response_type=token')
     Linking.addEventListener('url', handleUrl.bind(this));
     
     function handleUrl (event) {
@@ -56,7 +56,7 @@ class LoginForm extends Component {
           AsyncStorage.setItem('username', response.data.data.username)
         })
       } catch (error) {
-        console.error('permission denied');
+        console.error('permission denied', error);
       }
     }
   };
@@ -117,7 +117,7 @@ class LoginForm extends Component {
         <View style={{justifyContent: 'center', alignItems: 'center', marginTop: 200}}>
           <Image
             style={{resizeMode: 'contain'}}
-            source={require('../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png')}/>
+            source={require('../assets/ic_launcher.png')}/>
           <CardSection>
             {this.renderButton()}
           </CardSection>
