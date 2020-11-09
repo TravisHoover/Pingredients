@@ -10,6 +10,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "scheme": "https://pingredients",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
