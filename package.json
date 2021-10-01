@@ -24,6 +24,6 @@
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "babel-jest": "26.6.3",
     "babel-preset-react-native": "3.0.2",
-    "jest": "21.0.2"
+    "jest": "27.2.4"
   }
 }
